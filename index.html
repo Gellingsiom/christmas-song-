@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071b35">
+<title>Gellings Christmas Song</title>
+<style>
+:root{--navy:#071b35;--teal:#20c9c2;--gold:#e7c45d;--cream:#fff8e9}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at top,#173e61,var(--navy) 68%);color:var(--cream);font-family:Arial,Helvetica,sans-serif}
+main{max-width:1000px;width:calc(100% - 28px);margin:auto;padding:22px 0 40px;text-align:center}
+.brand{font-size:clamp(32px,6vw,50px);font-weight:900;letter-spacing:-1.5px;color:var(--teal)}
+.tagline{margin:0 0 20px;font-size:14px}
+.poster{display:block;width:100%;height:auto;border:3px solid var(--gold);border-radius:12px;box-shadow:0 18px 50px #0009}
+.player{max-width:680px;margin:22px auto;padding:22px;background:#102b49;border:1px solid #2b5679;border-radius:15px;box-shadow:0 12px 35px #0005}
+h1{font-size:clamp(23px,4vw,34px);margin:0 0 10px}
+p{line-height:1.5}
+button{border:0;border-radius:999px;padding:15px 26px;background:linear-gradient(135deg,#80c342,#b5df6d);color:#09213a;font-size:16px;font-weight:900;cursor:pointer}
+audio{display:block;width:100%;margin-top:16px}
+.note{font-size:12px;color:#bfd0df}
+footer{margin-top:22px;color:#d5e3ed;font-size:13px}footer b{color:var(--teal)}
+</style>
+</head>
+<body>
+<main>
+<div class="brand">Gellings</div>
+<div class="tagline">The Happy Hygiene &amp; Hospitality People</div>
+<img class="poster" src="christmas-song/assets/gellings-christmas-team.jpg" alt="Gellings Christmas team caricature">
+<section class="player">
+<h1>🎄 Santa's Ghellings Workshop 🎸</h1>
+<p>Our full Christmas anthem is here. Turn it up and enjoy!</p>
+<button id="play" type="button">▶ PLAY THE CHRISTMAS SONG</button>
+<audio id="song" controls preload="metadata">
+<source src="christmas-song/assets/santas-ghellings-workshop.mp3" type="audio/mpeg">
+Your browser does not support audio playback.
+</audio>
+<p class="note">Tap play to start the full 2-minute song. Your phone may need the volume turned up.</p>
+</section>
+<footer>Merry Christmas from everyone at <b>Gellings</b> ❤️</footer>
+</main>
+<script>
+const audio=document.getElementById('song'),button=document.getElementById('play');
+button.addEventListener('click',async()=>{if(audio.paused){try{await audio.play();button.textContent='❚❚ PAUSE THE SONG'}catch(e){button.textContent='PRESS PLAY IN THE PLAYER BELOW'}}else{audio.pause();button.textContent='▶ PLAY THE CHRISTMAS SONG'}});
+audio.addEventListener('play',()=>button.textContent='❚❚ PAUSE THE SONG');
+audio.addEventListener('pause',()=>button.textContent='▶ PLAY THE CHRISTMAS SONG');
+audio.addEventListener('ended',()=>button.textContent='↻ PLAY IT AGAIN');
+</script>
+</body>
+</html>
